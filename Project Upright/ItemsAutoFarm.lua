@@ -99,7 +99,7 @@ end
 --//autofarm
 
 for _,v in pairs(workspace:GetChildren()) do
-    AutoFarm(v)
+    autoFarm(v)
 end
 
-_G.Connections["AutoFarm"] = workspace.ChildAdded:Connect(AutoFarm)
+_G.Connections["AutoFarm"] = workspace.ChildAdded:Connect(autoFarm)
