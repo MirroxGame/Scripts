@@ -30,6 +30,7 @@ local tp = game:GetService("TeleportService")
 
 local plr = plrs.LocalPlayer
 local bodyVelocity = nil
+local foundPart = false
 
 _G.Connections = {}
 
@@ -43,16 +44,6 @@ local function getChar(part,isWait)
         return char:FindFirstChild(part) or isWait and char:WaitForChild(part)
     end
     return char
-end
-
-local function autoFarm(v)
-    if table.find(getgenv().Settings.ItemsName,v.Name) then
-        getChar():SetPrimaryPartCFrame(CFrame.new(v.Position) * CFrame.new(0,-10,0))
-        wait(getgenv().Settings.WaitTime)
-        for i = 0,1 do
-            firetouchinterest(v,getChar("HumanoidRootPart",true),i)
-        end
-    end
 end
 
 
@@ -71,6 +62,7 @@ _G.Connections["NoclipConnection"] = run.Stepped:Connect(function()
         for _,v in pairs(getChar():GetChildren()) do
             if v:IsA("BasePart") then
                 v.CanCollide = false
+                v.Anchored = false
             end
         end
         
@@ -97,8 +89,20 @@ end
 
 --//autofarm
 
-for _,v in pairs(workspace:GetChildren()) do
-    autoFarm(v)
+while getgenv().Settings.AutoFarm do wait()
+    for _,v in pairs(workspace:GetChildren()) do
+        if table.find(getgenv().Settings.ItemsName,v.Name) then
+            getChar():SetPrimaryPartCFrame(CFrame.new(v.Position) * CFrame.new(0,-getgenv().Settings.Distance,0))
+            
+            wait(getgenv().Settings.WaitTime)
+            
+            repeat
+                for i = 0,1 do
+                    firetouchinterest(v,getChar("HumanoidRootPart",true),i)
+                end
+                wait()
+            until not v.Parent
+            
+        end
+    end
 end
-
-_G.Connections["AutoFarm"] = workspace.ChildAdded:Connect(autoFarm)
