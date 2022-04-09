@@ -13,7 +13,7 @@ end
 
 --//functions check
 
-for i,v in pairs({["firetouchinterest"] = firetouchinterest}) do
+for i,v in pairs({["getgenv"] = getgenv, ["firetouchinterest"] = firetouchinterest}) do
     assert(v,("Your exploit does not support %s function."):format(i))
 end
 
@@ -31,7 +31,6 @@ local tp = game:GetService("TeleportService")
 local plr = plrs.LocalPlayer
 local bodyVelocity = nil
 
-local names = {"Stand Arrow","Rokakaka"}
 _G.Connections = {}
 
 
@@ -47,7 +46,7 @@ local function getChar(part,isWait)
 end
 
 local function autoFarm(v)
-    if table.find(names,v.Name) then
+    if table.find(getgenv().Settings.ItemsName,v.Name) then
         getChar():SetPrimaryPartCFrame(CFrame.new(v.Position) * CFrame.new(0,-10,0))
         wait(getgenv().Settings.WaitTime)
         for i = 0,1 do
