@@ -11,7 +11,7 @@ if not game:IsLoaded() then
 end
 
 
---//functions
+--//functions check
 
 for i,v in pairs({["firetouchinterest"] = firetouchinterest}) do
     assert(v,("Your exploit does not support %s function."):format(i))
