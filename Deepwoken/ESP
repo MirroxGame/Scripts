@@ -11,29 +11,22 @@ assert(not getgenv().DoubleExecute,"The script was already executed.")
 getgenv().DoubleExecute = true
 
 
+--//services
+
+local HttpService = game:GetService("HttpService")
+
+
 --//variables
 
 local Thrown = workspace:WaitForChild("Thrown")
 
-local Data = {}
-
-local FileName = "DataAboutItems.json"
+local Data = loadstring(game:HttpGet("https://raw.githubusercontent.com/MirroxGame/Scripts/main/Deepwoken/DataAboutItems.json"))()
+local EspModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/misanthropic2005/DaHood/main/library(s)/KiriotEsp.lua"))()
 
 
 --initialization
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/MirroxGame/Tools/main/settings/settings.lua"))()
-
-local ExistingFile = pcall(readfile, FileName)
-
-if not ExistingFile then
-    Set(FileName,Data)
-else
-    Data = Load(FileName)
-end
-
-
-local EspModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/misanthropic2005/DaHood/main/library(s)/KiriotEsp.lua"))()
+Data = HttpService:JSONDecode(Data)
 
 EspModule.Players = false
 EspModule.Boxes = false
