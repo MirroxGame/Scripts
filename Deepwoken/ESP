@@ -20,7 +20,7 @@ local HttpService = game:GetService("HttpService")
 
 local Thrown = workspace:WaitForChild("Thrown")
 
-local Data = loadstring(game:HttpGet("https://raw.githubusercontent.com/MirroxGame/Scripts/main/Deepwoken/DataAboutItems.json"))()
+local Data = game:HttpGet("https://raw.githubusercontent.com/MirroxGame/Scripts/main/Deepwoken/DataAboutItems.json")
 local EspModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/misanthropic2005/DaHood/main/library(s)/KiriotEsp.lua"))()
 
 
