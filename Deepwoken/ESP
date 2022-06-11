@@ -1,12 +1,3 @@
---//settings
-
-getgenv().ShowItems = true
-getgenv().Sort = {"Dark Feather","Void Feather","Umbral Obsidian"}
-getgenv().ItemsSort = true
-getgenv().ChestShowType = "Closed" -- "Opened" or "Closed" or "All"
-getgenv().ShowChests = true
-
-
 --//game-load
 
 if not game:IsLoaded() then
