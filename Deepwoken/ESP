@@ -143,5 +143,3 @@ end
 Thrown.DescendantAdded:Connect(CheckObject)
 
 EspModule:Toggle(true)
-
-syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/MirroxGame/Scripts/main/Deepwoken/ESP'))()")
