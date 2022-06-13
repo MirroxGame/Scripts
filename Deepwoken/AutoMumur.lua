@@ -112,7 +112,7 @@ assert(OwnedMumur,"You don't have a mumur.")
 
 Player.Idled:Connect(function()
     VirtualUser:CaptureController()
-	VirtualUser:ClickButton2(Vector2.new())
+    VirtualUser:ClickButton2(Vector2.new())
 end)
 
 
@@ -122,5 +122,8 @@ while true do
     if getgenv().Active then
         wait(.5)
         Main()
+    else
+        getgenv().DoubleExecuteMumur = false
+        break
     end
 end
