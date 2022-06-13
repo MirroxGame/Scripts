@@ -1,9 +1,3 @@
---//settings
-
-getgenv().Active = true
-getgenv().AntiAfk = false
-
-
 --//game-load
 
 if not game:IsLoaded() then
