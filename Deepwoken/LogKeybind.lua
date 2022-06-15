@@ -29,7 +29,7 @@ local MenuEvent = ReplicatedStorage:WaitForChild("Requests"):WaitForChild("Retur
 --//main-code
 
 UIS.InputEnded:Connect(function(Input,IsWriting)
-    if not IsWriting and getgenv().Enabled and Input.KeyCode == getgenv().Key and not GUI:FindFirstChild("ChoicePrompt") and not GUI:WaitForChild("StatsGui",5):FindFirstChild("Danger") then
+    if not IsWriting and getgenv().Enabled and Input.KeyCode == getgenv().Key and not GUI:FindFirstChild("ChoicePrompt") and not GUI:WaitForChild("StatsGui",5):WaitForChild("Danger",5).Visible then
         MenuEvent:FireServer()
         GUI:WaitForChild("ChoicePrompt",5):WaitForChild("Choice",5):FireServer(true)
     end
