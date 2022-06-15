@@ -1,14 +1,14 @@
+--//double execute
+
+assert(not getgenv().DoubleExecuteMumur,"The script was already executed.")
+getgenv().DoubleExecuteMumur = true
+
+
 --//game-load
 
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
-
-
---//double execute
-
-assert(not getgenv().DoubleExecuteMumur,"The script was already executed.")
-getgenv().DoubleExecuteMumur = true
 
 
 --//services
@@ -53,8 +53,7 @@ local function GetWeapon()
     local Weapon = Hand:WaitForChild("HandWeapon",5)
     
     if not Weapon then
-        GetWeapon()
-        return
+        return GetWeapon()
     end
     
     return Weapon
@@ -62,7 +61,7 @@ end
 
 local function GetEtherState()
     local Ether = GetChar("Ether",true)
-    if not Ether then GetEtherState() return false end
+    if not Ether then return GetEtherState() end
     return Ether.Value == Ether.MaxValue
 end
 
