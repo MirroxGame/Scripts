@@ -76,7 +76,12 @@ end
 plr:WaitForChild("Backpack").ChildAdded:Connect(backpackCheck)
 
 plr.ChildAdded:Connect(function(obj)
-    if obj:IsA("Backpack") then
+    if obj:IsA("Backpack") or v.Name == "Backpack" then
+        
+        for _,v in pairs(obj:GetChildren()) do
+            backpackCheck(v)
+        end
+            
         obj.ChildAdded:Connect(backpackCheck)
     end
 end)
