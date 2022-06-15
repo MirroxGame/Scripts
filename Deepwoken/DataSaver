@@ -73,6 +73,8 @@ for _,v in pairs(plr:WaitForChild("Backpack"):GetChildren()) do
     backpackCheck(v)
 end
 
+plr:WaitForChild("Backpack").ChildAdded:Connect(backpackCheck)
+
 plr.ChildAdded:Connect(function(obj)
     if obj:IsA("Backpack") then
         obj.ChildAdded:Connect(backpackCheck)
