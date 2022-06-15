@@ -50,7 +50,7 @@ end
 
 
 local function backpackCheck(v)
-    if v:IsA("Tool") and v:FindFirstChild("Handle") and not table.find(params,v.Name) and checkStatus(v) then
+    if v:IsA("Tool") and v:WaitForChild("Handle",5) and not table.find(params,v.Name) and checkStatus(v) then
             
         params[v.Name:match("[^$]+")] = {}
         
