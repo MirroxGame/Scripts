@@ -67,7 +67,7 @@ local function Item(Model)
             end
         end
         
-        if isFound and (table.find(getgenv().Sort,LootName) and getgenv().ItemsSort or not getgenv().ItemsSort) then
+        if isFound and (type(getgenv().SortItems) == "table" and table.find(getgenv().Sort,LootName) or type(getgenv().SortItems) ~= "table") then
             AddEsp(LootPart,LootName)
             break
         end
@@ -104,6 +104,17 @@ local function Chest(Model)
     end
 end
 
+
+local function Bubbles(Object)
+    local Particles = Object:WaitForChild("Bubbles",5)
+    
+    if tostring(Particles.Size):gsub(" ","") == "0000.1724141.693990.2543850.4987973.16941.09290.8612671.967210.683727100" and (getgenv().BubblesShowType == "Lionfish" or getgenv().BubblesShowType == "All") then -- credits to Jamesex#3918 for size parameter
+        AddEsp(Object,"Lionfish")
+    elseif (getgenv().BubblesShowType == "Drago" or getgenv().BubblesShowType == "All") then
+        AddEsp(Object,"Drago")
+    end
+end
+    
 local function CheckObject(Object)
     if Object:IsA("Model") then
         
@@ -119,6 +130,8 @@ local function CheckObject(Object)
             Item(Object.Parent)
         elseif Object.Name == "Lid" and getgenv().ShowChests then
             Chest(Object.Parent)
+        elseif Object.Name == "SeaBubbles" and getgenv().ShowBubbles then
+            Bubbles(Object)
         end
         
     end
