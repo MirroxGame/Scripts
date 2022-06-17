@@ -104,8 +104,11 @@ end
 --//mumur checking
 
 local OwnedMumur,_ = MumurType()
-assert(OwnedMumur,"You don't have a mumur.")
-
+if not OwnedMumur then
+    warn("You don't have a mumur.")
+    getgenv().DoubleExecuteMumur = false
+    return
+end
 
 --//anti afk
 
