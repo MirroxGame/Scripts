@@ -67,7 +67,7 @@ local function Item(Model)
             end
         end
         
-        if isFound and (type(getgenv().SortItems) == "table" and table.find(getgenv().Sort,LootName) or type(getgenv().SortItems) ~= "table") then
+        if isFound and (type(getgenv().SortItems) == "table" and table.find(getgenv().SortItems,LootName) or type(getgenv().SortItems) ~= "table") then
             AddEsp(LootPart,LootName)
             break
         end
