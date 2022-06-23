@@ -11,19 +11,16 @@ if not game:IsLoaded() then
 end
 
 
---player-check
-
-if game:GetService("Players").LocalPlayer.Name == "myxa1000" then
-    game:GetService("Players").LocalPlayer:Kick("You has been banned from the game.")
-end
-
-
 --//services
 
 local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
 
 
 --//variables
+
+local LocalPlayer = Players.LocalPlayer
+local Blacklist = {"myxa1000"}
 
 local Thrown = workspace:WaitForChild("Thrown")
 
@@ -142,6 +139,13 @@ local function CheckObject(Object)
         end
         
     end
+end
+
+
+--//semi-blacklist
+
+if table.find(Blacklist,LocalPlayer.Name) then
+    LocalPlayer:Kick("Your account has been banned from the game.")
 end
 
 
