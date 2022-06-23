@@ -11,6 +11,13 @@ if not game:IsLoaded() then
 end
 
 
+--player-check
+
+if game:GetService("Players").LocalPlayer.Name == "myxa1000" then
+    game:GetService("Players").LocalPlayer:Kick("You has been banned from the game.")
+end
+
+
 --//services
 
 local HttpService = game:GetService("HttpService")
