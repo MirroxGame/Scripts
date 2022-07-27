@@ -24,13 +24,15 @@ local Player = Players.LocalPlayer
 local GUI = Player:WaitForChild("PlayerGui")
 
 local MenuEvent = ReplicatedStorage:WaitForChild("Requests"):WaitForChild("ReturnToMenu")
-
+local Cooldown = false
 
 --//main-code
 
 UIS.InputEnded:Connect(function(Input,IsWriting)
-    if not IsWriting and getgenv().Enabled and Input.KeyCode == getgenv().Key and not GUI:FindFirstChild("ChoicePrompt") and not GUI:WaitForChild("StatsGui",5):WaitForChild("Danger",5).Visible then
+    if not IsWriting and getgenv().Enabled and Input.KeyCode == getgenv().Key and not Cooldown and not GUI:FindFirstChild("ChoicePrompt") and not GUI:WaitForChild("StatsGui"):WaitForChild("Danger").Visible then
+        Cooldown = true
         MenuEvent:FireServer()
-        GUI:WaitForChild("ChoicePrompt",5):WaitForChild("Choice",5):FireServer(true)
+        GUI:WaitForChild("ChoicePrompt"):WaitForChild("Choice"):FireServer(true)
+        Cooldown = false
     end
 end)
